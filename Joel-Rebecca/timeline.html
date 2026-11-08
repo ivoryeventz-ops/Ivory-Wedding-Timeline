@@ -11,12 +11,16 @@
   <meta property="og:site_name" content="Ivory Events" />
   <meta property="og:title" content="Joel &amp; Rebecca | Wedding Day Guide" />
   <meta property="og:description" content="Your MarThoma wedding day guide for 14 November 2026, from Ivory Events." />
-  <meta property="og:url" content="https://ivory-wedding-timeline.pages.dev/joel-rebecca/" />
-  <meta property="og:image" content="https://ivory-wedding-timeline.pages.dev/joel-rebecca/ivory-logo.png" />
+  <meta property="og:url" content="https://ivory-wedding-timeline.pages.dev/Joel-Rebecca/timeline" />
+  <meta property="og:image" content="https://ivory-wedding-timeline.pages.dev/ivory-logo.png" />
+  <meta property="og:image:secure_url" content="https://ivory-wedding-timeline.pages.dev/ivory-logo.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Ivory Events logo" />
   <meta name="twitter:card" content="summary" />
-  <link rel="icon" href="ivory-logo.png" type="image/png" />
+  <meta name="twitter:image" content="https://ivory-wedding-timeline.pages.dev/ivory-logo.png" />
+  <link rel="icon" href="/ivory-logo.png" type="image/png" />
 
   <!-- Premium Google Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,6 +104,21 @@
 
     .brand span {
       color: var(--gold-primary);
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      margin-right: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+      }
     }
 
     .nav-tag {
@@ -579,7 +598,7 @@
 
   <header id="nav-header">
     <div class="nav-wrap">
-      <a href="#nav-header" class="brand">Ivory<span>.</span>Events</a>
+      <a href="#nav-header" class="brand"><img class="brand-logo" src="/ivory-logo.png" alt="Ivory Events logo" width="52" height="52" />Ivory<span>.</span>Events</a>
       <span class="nav-tag">Joel &amp; Rebecca · 14 November 2026</span>
     </div>
   </header>
