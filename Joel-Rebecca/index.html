@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Joel & Rebecca | Wedding Hub | Ivory Events</title>
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ivory Events" />
+<meta property="og:title" content="Joel &amp; Rebecca | Wedding Hub" />
+<meta property="og:description" content="Decor quote, wedding day guide and MC script in one place - Ivory Events." />
+<meta property="og:url" content="https://ivory-wedding-timeline.pages.dev/Joel-Rebecca/" />
+<meta property="og:image" content="https://ivory-wedding-timeline.pages.dev/ivory-logo.png" />
+<meta name="twitter:card" content="summary" />
+<link rel="icon" href="/ivory-logo.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#FAF7F2; --gold:#C5A059; --gold-deep:#7D5C24; --border:#E8E1D7; --text:#2D2926; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  html, body { height:100%; background:var(--bg); }
+  body { display:flex; flex-direction:column; font-family:'Plus Jakarta Sans', system-ui, sans-serif; color:var(--text); }
+  header { background:#fff; border-bottom:1px solid var(--border); padding:8px 12px 0; flex-shrink:0; }
+  .top { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-bottom:8px; }
+  .brand { display:flex; align-items:center; gap:10px; font-family:'Cormorant Garamond', serif; font-weight:700; font-size:1.25rem; letter-spacing:.1em; text-transform:uppercase; }
+  .brand img { width:34px; height:34px; object-fit:contain; }
+  .brand small { display:block; font-family:'Plus Jakarta Sans', sans-serif; font-size:.68rem; letter-spacing:.04em; text-transform:none; color:var(--gold-deep); font-weight:600; }
+  .open-new { font-size:.74rem; font-weight:600; color:var(--gold-deep); text-decoration:none; border:1px solid var(--gold); border-radius:20px; padding:6px 12px; white-space:nowrap; }
+  nav { display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  nav button { flex:1 1 auto; background:none; border:none; border-bottom:3px solid transparent; padding:10px 14px; font:inherit; font-size:.86rem; font-weight:600; color:#8a8378; cursor:pointer; white-space:nowrap; }
+  nav button.active { color:var(--gold-deep); border-bottom-color:var(--gold); }
+  main { flex:1; position:relative; min-height:0; }
+  iframe { position:absolute; inset:0; width:100%; height:100%; border:0; background:#fff; display:none; }
+  iframe.active { display:block; }
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="brand"><img src="/ivory-logo.png" alt="" />
+      <div>Ivory Events<small>Joel &amp; Rebecca · 14 Nov 2026</small></div>
+    </div>
+    <a class="open-new" id="openNew" href="#" target="_blank" rel="noopener">Open full page ↗</a>
+  </div>
+  <nav id="tabs">
+    <button data-tab="quote" class="active">Decor Quote</button>
+    <button data-tab="timeline">Wedding Day Guide</button>
+    <button data-tab="script">MC Script</button>
+  </nav>
+</header>
+
+<main>
+  <iframe id="f-quote" class="active" title="Decor Quote"></iframe>
+  <iframe id="f-timeline" title="Wedding Day Guide"></iframe>
+  <iframe id="f-script" title="MC Script"></iframe>
+</main>
+
+<script>
+  // Each tab simply points at the existing page. Edit the addresses here if they ever move.
+  var PAGES = {
+    quote:    'https://ivory-packages.pages.dev/Rebecca/261103',
+    timeline: '/Joel-Rebecca/timeline',
+    script:   '/AnchorScript'
+  };
+  var tabs = document.querySelectorAll('#tabs button');
+  var openNew = document.getElementById('openNew');
+
+  function show(name) {
+    if (!PAGES[name]) name = 'quote';
+    tabs.forEach(function (b) { b.classList.toggle('active', b.dataset.tab === name); });
+    Object.keys(PAGES).forEach(function (k) {
+      var f = document.getElementById('f-' + k);
+      f.classList.toggle('active', k === name);
+      if (k === name && !f.src) f.src = PAGES[k];   // load a tab only when first opened
+    });
+    openNew.href = PAGES[name];
+    try { history.replaceState(null, '', '#' + name); } catch (e) {}
+  }
+
+  tabs.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.tab); }); });
+  show(location.hash.replace('#', '') || 'quote');
+</script>
+</body>
+</html>
